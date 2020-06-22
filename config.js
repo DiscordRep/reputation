@@ -12,7 +12,7 @@ let config = {
   admins: ["595366004423524353", "538855659714641960"],
   prefix: process.env.PREFIX,
   missingperms: "Unauthorized action",
-  wrongUsage: "Missing arguments in command, correct usage: ",
+  wrongUsage: "Wrong usage, correct usage: ",
 
   react: {
     upvote: "627662811467874314",
@@ -58,7 +58,8 @@ let config = {
   },
 
   channels: {
-    commandsLog: "627890310013386758"
+    commandsLog: "627890310013386758",
+    announcements: "653239826602131469"
   }
 
 
