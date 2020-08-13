@@ -49,7 +49,7 @@ exports.run = async (client, guild, message, args, drep, msg, dm) => {
     repColor = repColor == "GREEN" && reputation < 0 ? repColor = "ORANGE" : "GREEN";
 
     let profileEmbed = new Discord.MessageEmbed()
-        .setAuthor(`${member.tag}`, member.user.avatarURL({ format: "png", dynamic: true }))
+        .setAuthor(`${member.user.tag}`, member.user.avatarURL({ format: "png", dynamic: true }))
         .setColor(repColor)
         .setDescription(messageContent)
         .addField("Reputation", `${reputation}${repIcon}

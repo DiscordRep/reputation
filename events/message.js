@@ -10,7 +10,7 @@ const Warns = require("../models/warns");
 const Votes = require("../models/votes");
 
 const { DRepClient } = require('@drep/api');
-const drep = new DRepClient('D-REP.EMVO3EKZFPQT3D..B9NU193DUH51Q41B0.RN.RV3CBL9RZ7TZX86X2UTDI');
+const drep = new DRepClient(config.dreptoken);
 
 exports.run = async (client, message) => {
 

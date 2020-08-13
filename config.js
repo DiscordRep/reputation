@@ -8,6 +8,7 @@ let config = {
   webhookAuth: process.env.WEBHOOAUTH,
   dblToken: process.env.DBLTOKEN,
   domain: process.env.DOMAIN,
+  dreptoken: process.env.DRTOKEN,
 
   admins: ["595366004423524353", "538855659714641960"],
   prefix: process.env.PREFIX,
