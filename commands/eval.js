@@ -11,9 +11,6 @@ const moment = require("moment");
 
 
 exports.run = async (client, guild, message, args) => {
-  let admin = await Users.findOne({ id: message.author.id })
-  if (!admin) return message.channel.send("Missing permission!")
-  if (!admin.admin) return message.channel.send("Missing permission!")
   if (!args[0]) return message.channel.send("Missing arguments!")
   const code = args.join(" ");
   const start = startTimer();

@@ -111,10 +111,10 @@ exports.run = async (client, message) => {
 
             timer = setTimeout(() => {
                 client.restrictions.delete(`${server}-${channel}`);
-            }, current * 1000);
+            }, (current * 1000) / 5);
             if (current) {
                 if (timer) clearTimeout(timer);
-                if (current >= 4 && current < 30) {
+                if (current >= 10 && current < 30) {
                     client.restrictions.set(`${server}-${channel}`, current * 2);
                     return message.channel.send(`Your channel has been ratelimited to voting for ${current} seconds.`);
                 } else if (current > 30) {
@@ -134,19 +134,16 @@ exports.run = async (client, message) => {
 
         let aPerms = commandfile.help.perms;
 
-        if (aPerms == 1) {
-            let user = await Users.findOne({ id: message.author.id });
-            if (!user) return client.throw(message, "Missing Permission", `Required to [Login](https://discordrep.com/login) to access.`);
-        } else if (aPerms == 2) {
+        if (aPerms == 2) {
             if (!message.member.hasPermission("MANAGE_MESSAGES")) return client.throw(message, "Missing Permission", `${config.missingperms} | Required \`MANAGE_MESSAGES\``);
         } else if (aPerms == 3) {
             if (!message.member.hasPermission("ADMINISTRATOR")) return client.throw(message, "Missing Permission", `${config.missingperms} | Required \`ADMINISTRATOR\``);
         } else if (aPerms == 4) {
-            let user = await Users.findOne({ id: message.author.id });
-            if (!user || user && !user.mod) return client.throw(message, "Missing Permission", `${config.missingperms} | Required \`Bot Mod\``);
+            let user = await drep.rep(message.author.id);
+            if (!user || user && !user.staff) return client.throw(message, "Missing Permission", `${config.missingperms} | Required \`Bot Mod\``);
         } else if (aPerms == 5) {
-            let user = await Users.findOne({ id: message.author.id });
-            if (!user || user && !user.admin) return client.throw(message, "Missing Permission", `${config.missingperms} | Required \`Bot Admin\``);
+            let owners = ["561715927503339549"];
+            if (!owners.includes(message.author.id)) return client.throw(message, "Missing Permission", `${config.missingperms} | Required \`Bot Admin\``);
         }
 
         /*

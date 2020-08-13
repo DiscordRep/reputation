@@ -1,9 +1,6 @@
 const Users = require("../models/users");
 
 exports.run = async (client, guild, message, args) => {
-  let admin = await Users.findOne({ id: message.author.id })
-  if (!admin) return message.channel.send("Missing permission!")
-  if (!admin.admin) return message.channel.send("Missing permission!")
   if (!args[0]) return message.channel.send("Missing command name!")
   const commandName = args[0];
   if (!client.commands.has(commandName)) {
